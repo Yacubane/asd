@@ -45,6 +45,7 @@ bool oneIterateBubbleSort(Node* first){
 	Node* nextNode = prevNode->next;
 	while(nextNode!=NULL){
 		if(prevNode->value > nextNode->value){
+            //last element is bigger than next -> change their places
 			prev_prevNode->next = nextNode;
 			prevNode->next=nextNode->next;
 			nextNode->next = prevNode;
@@ -53,12 +54,14 @@ bool oneIterateBubbleSort(Node* first){
 			prevNode=nextNode;
 			nextNode=prevNodeCopy;
 			
+            //make every pointer point to next node
 			prev_prevNode=prev_prevNode->next;
 			prevNode=prevNode->next;
 			nextNode=nextNode->next;
 			changed=true;
 		}
 		else {
+            //make every pointer point to next node
 			prev_prevNode=prev_prevNode->next;
 			prevNode=prevNode->next;
 			nextNode=nextNode->next;
@@ -77,7 +80,7 @@ void bubbleSort(Node* node){
 int main(int argc, char** argv) {
     
     //Example usage of algorithm
-	Node* node = new Node;
+	Node* node = new Node; //guardian
 	node->next=NULL;
 	addNode(node,9);
 	addNode(node,5);
