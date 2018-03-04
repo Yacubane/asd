@@ -1,0 +1,10 @@
+Proszê zaimplementowaæ funkcjê sortuj¹c¹ (rosn¹co) listê jednokierunkow¹ metod¹
+QuickerSort. Algorytm QuickerSort to odmiana algorytmu QuickSort, w której funkcja
+podzia³u dzieli sortowane dane wed³ug przyjêtej wartoœci x na trzy grupy: mniejsze od x, równe
+x, oraz wiêksze od x. Nastêpnie rekurencyjnie sortowane s¹ grupy pierwsza i trzecia. Pañstwa
+funkcja powinna mieæ nastêpuj¹cy prototyp:
+struct Node { Node* next; int val; };
+Node* QuickerSort ( Node* head )
+Argumentem funkcji jest wskaŸnik na g³owê listy do posortowania a wynikiem powinien byæ
+wskaŸnik na g³owê listy posortowanej. Sortowanie powinno polegaæ na porównywaniu wartoœci
+val list oraz przepinaniu wskaŸników next.
