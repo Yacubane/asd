@@ -47,17 +47,16 @@ void partition(Node* head, int x, Node*& lessFirstNode, Node*& exactlyFirstNode,
 /**
     Adds list to list
 
-    @param *list1 - pointer to first element of list, where elements will be added
+    @param *list1 - pointer to any element of list, where elements will be added
     @param *list2 - pointer to first element of list, from where elements will be taken
 
     @return a pointer to last element of list1
 */
 Node* addListToList(Node* list1, Node* list2){
-	while(list2!=NULL){
-		list1->next=list2;
-		list2=list2->next;
+	while(list1->next!=NULL){
 		list1=list1->next;
 	}
+	list1->next=list2;
 	return list1;
 }
 /**
