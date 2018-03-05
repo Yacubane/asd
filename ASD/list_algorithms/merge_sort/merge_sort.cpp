@@ -10,22 +10,6 @@ struct Node{
 };
 
 /**
-    Returns size of list (number of elements)
-
-    @param *list - pointer to first element of list
-    
-    @return an integer with number of elements
-*/
-int getSizeOfList(Node* list){
-	int counter = 0;
-	while(list != NULL){
-		counter++;
-		list=list->next;
-	}
-	return counter;
-}
-
-/**
     Prints all values from list
 
     @param *list - pointer to first element of list
@@ -71,13 +55,11 @@ Node* mergeSortedLists(Node *list1, Node *list2){
 	while(list1!=NULL || list2!=NULL){
 		if(list1!=NULL && list2==NULL){
 			current->next = list1;
-			current=current->next;
-			list1=list1->next;
+			return first->next; //returns next element after guardian
 		}
 		else if(list1==NULL && list2!=NULL){
 			current->next = list2;
-			current=current->next;
-			list2=list2->next;
+			return first->next; //returns next element after guardian
 		}
 		else {
 			if(list1->value < list2->value){
@@ -124,7 +106,7 @@ Node* splitList(Node* list){
     @return a pointer to sorted list
 */
 Node* mergeSort(Node* list1){
-	if(getSizeOfList(list1)>1){
+	if(list1!=NULL && list1->next!=NULL){ //list size is bigger than 1
 		Node* list2 = splitList(list1);
 		Node* sortedList1 = mergeSort(list1);
 		Node* sortedList2 = mergeSort(list2);
