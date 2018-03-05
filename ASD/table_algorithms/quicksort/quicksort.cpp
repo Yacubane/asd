@@ -56,8 +56,7 @@ void quicksort(int A[], int p, int r){
 }
 
 /**
-	Quicksorts array in selected range
-	Example usage: to sort whole array quicksort(array, 0, array.length-1);
+	Prints whole array
 	
 	@param A[] - array
 	@param n - size of array
