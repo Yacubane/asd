@@ -41,41 +41,37 @@ void addNode(Node* list, int value){
 	}
 }
 
+
+
 /**
-    Merges two sorted lists (without guardian)
+    Merges two sorted lists (without guardian).
 
     @param *list1 - pointer to first element of first list
     @param *list2 - pointer to first element of second list
     
     @return a first pointer of new sorted list
 */
-Node* mergeSortedLists(Node *list1, Node *list2){
-	Node* first=new Node; //first guardian of sorted final list (temporary)
-	Node* current=first; //current node in final list
-	while(list1!=NULL || list2!=NULL){
-		if(list1!=NULL && list2==NULL){
-			current->next = list1;
-			return first->next; //returns next element after guardian
-		}
-		else if(list1==NULL && list2!=NULL){
-			current->next = list2;
-			return first->next; //returns next element after guardian
-		}
-		else {
-			if(list1->value < list2->value){
-				current->next=list1;
-				current=current->next;
-				list1=list1->next;
-			}
-			else {
-				current->next=list2;
-				current=current->next;
-				list2=list2->next;
-			}
-		}
-		
+void mergeSortedListsRecursive(Node* lastNode, Node *list1, Node *list2){
+	if(list1==NULL){
+		lastNode->next=list2;
+		return;
 	}
-	return first->next; //returns next element after guardian
+	if(list2==NULL){
+		lastNode->next=list1;
+		return;
+	}
+	if(list1->value < list2->value){
+		lastNode->next=list1;
+		list1=list1->next;
+		lastNode=lastNode->next;
+		mergeSortedListsRecursive(lastNode, list1,list2);
+	}
+	else {
+		lastNode->next=list2;
+		list2=list2->next;
+		lastNode=lastNode->next;
+		mergeSortedListsRecursive(lastNode, list1,list2);
+	}
 }
 
 /**
@@ -99,7 +95,7 @@ Node* splitList(Node* list){
 }
 
 /**
-    Sorts list (without guardian) using a recursive merge sort algorithm
+    Sorts list (without guardian) using a recursive merge sort algorithm (and recursive merging algorithm)
 
     @param *list1 - pointer to first element of list
     
@@ -110,11 +106,12 @@ Node* mergeSort(Node* list1){
 		Node* list2 = splitList(list1);
 		Node* sortedList1 = mergeSort(list1);
 		Node* sortedList2 = mergeSort(list2);
-		return mergeSortedLists(sortedList1,sortedList2);
+		Node* guard = new Node;
+		mergeSortedListsRecursive(guard,sortedList1,sortedList2);
+		return guard->next;
 	}
 	return list1;
 }
-
 int main(int argc, char** argv) {
 	//EXAMPLE USAGE OF ALGORITHM		
 	Node* testList = new Node;
