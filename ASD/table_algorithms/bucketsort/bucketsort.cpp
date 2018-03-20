@@ -95,7 +95,7 @@ void bucketsort(double A[], int n, int k){
 	List buckets[k];
 	for (int i=0; i<k; i++) initList(buckets[i]);
 	for (int i=0; i<n; i++) addToList(buckets[(int)(A[i]*k)],A[i]);
-	for (int i=0; i<n; i++) insertSort(buckets[i]);
+	for (int i=0; i<k; i++) insertSort(buckets[i]);
 
 	int j = 0;
 	for(int i = 0; i < k; i++){
@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
 
 	printArray(tab,n);
 
-	bucketsort(tab, n, 10);
+	bucketsort(tab, n, 5);
 
 	std::cout << std::endl << "SORTED ARRAY" << std::endl;
 	printArray(tab,n);
