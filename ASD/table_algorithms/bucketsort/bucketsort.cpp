@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
 	double tab[n];
 	
 	for(int i = 0; i < n; i++){
-		tab[i]=rand() /(double) RAND_MAX;
+		tab[i]=rand() /(double) (RAND_MAX+1);
 	}
 	std::cout << std::endl << "ARRAY" << std::endl;
 
