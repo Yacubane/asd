@@ -63,7 +63,8 @@ void init_phonebook(Phonebook *phonebook){
 	for(int i = 0; i < ARR_SIZE; i++) phonebook->nodes[i]=NULL;
 }
 /**
-	Finds node associated with last name. Can be useful if you can check collisions with this last name.
+	Finds FIRST node associated with last name. Can be useful if you want to check collisions with this last name.
+	Beware -> it doesn't search for last_name node, but for key generated with last_name string.
 	@param *phonebook - pointer to phonebook
 	@param last_name - last_name
 	
