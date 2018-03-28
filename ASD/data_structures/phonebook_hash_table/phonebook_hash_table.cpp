@@ -37,7 +37,7 @@ uint32_t generate_32bit_key(string last_name){
 		char partial_result = last_name[i]; //in this char, XOR value of one column will be calculated
 		int j = i+size;
 		while(last_name.length() > j){
-			result ^= last_name[j];
+			partial_result ^= last_name[j];
 			j+=size;
 		}
 		result |= partial_result; //this line adds partial_result bits to result
