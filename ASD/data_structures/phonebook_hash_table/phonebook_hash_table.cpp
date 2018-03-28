@@ -33,6 +33,7 @@ struct Phonebook{
 uint32_t generate_32bit_key(string last_name){
 	uint32_t result = 0;
 	int size = 32/8; //size in BYTES
+	if(size > last_name.length()) size = last_name.length(); //special case if there is less "columns" than 4
 	for(int i = 0; i < size; i++){
 		char partial_result = last_name[i]; //in this char, XOR value of one column will be calculated
 		int j = i+size;
