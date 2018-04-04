@@ -131,7 +131,7 @@ void sort(Node*& list){
 	while(list!=NULL){
 		Node* tmp = list;
 		list=list->next;
-		addToList(buckets[(int)(tmp->value)],tmp);
+		addToList(buckets[(int)(tmp->value/10.0 *k)],tmp);
 	}
 	for (int i=0; i<k; i++) insertSort(buckets[i]);
 	
@@ -165,7 +165,7 @@ int main(int argc, char** argv) {
 	Node* testList = new Node;
 	testList->next=NULL; //must be NULL in order to detect end of list
 	testList->value=generateRandomNumber();
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < 100; i++){
 		addNode(testList,generateRandomNumber());
 	}
 	printList(testList);
