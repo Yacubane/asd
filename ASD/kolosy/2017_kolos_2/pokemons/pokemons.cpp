@@ -1,3 +1,20 @@
+/*
+Student chce wypuœciæ n ró¿nych pok´emonów (numerowanych od 0 do n - 1) z klatek
+(pok´eball’i). Wypuszczony Pok´emon natychmiast atakuje swojego wybawiciela, chyba ¿e (a) jest
+spokojny, lub (b) w okolicy znajduj¹ siê co najmniej dwa uwolnione pok´emony, na które ten
+pok´emon poluje. Proszê zaimplementowaæ funkcjê:
+int* releaseThemAll( HuntingList* list, int n ),
+gdzie list to lista z informacj¹, które pok´emony poluj¹ na które (lista nie zawiera powtórzeñ):
+struct HuntingList {
+HuntingList* next; // nastêpny element listy
+int predator; // numer pokemona, który poluje
+int prey; } // numer pokemona, na którego poluje
+Funkcja powinna zwróciæ n elementow¹ tablicê z numerami pok´emonów w kolejnoœci
+wypuszczania (tak, ¿eby wypuszczaj¹cy nie zosta³ zaatakowany) lub NULL jeœli taka kolejnoœæ nie
+istnieje. Ka¿dy wypuszczony pok´emon zostaje ”w okolicy”. Jeœli pok´emon nie wystêpuje na liœcie
+jako predator to znaczy, ¿e jest spokojny. Zaimplementowana funkcja powinna byæ mo¿liwie jak
+najszybsza. Proszê krótko oszacowaæ jej z³o¿onoœæ.
+*/
 #include <iostream>
 struct HuntingList {
     HuntingList* next;
