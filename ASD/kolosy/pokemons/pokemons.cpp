@@ -22,14 +22,25 @@ struct Queue{
     int *arr;
     int counter;
 };
-
+/**
+ * Inserts predator to the list of predators of prey
+ * @param prey
+ * @param predator
+ */
 void insertPredator(Pokemon* prey, Pokemon* predator){
     PokemonNode* node = new PokemonNode;
     node->next=prey->predators;
     node->pokemon=predator;
     prey->predators=node;
 }
-
+/**
+ * Unleashes pokemon, decrements remaingingPreys counter
+ * in every predator of pokemon and if remaingingPreys<=0
+ * recursively unleashes this predator.
+ * What's more, it adds id of pokemon to queue
+ * @param pokemon
+ * @param queue
+ */
 void unleashPokemon(Pokemon* pokemon, Queue* queue){
     pokemon->outside=true;
     queue->arr[queue->counter++]=pokemon->id;
@@ -44,6 +55,7 @@ void unleashPokemon(Pokemon* pokemon, Queue* queue){
     }
 }
 int* releaseThemAll(HuntingList* list, int n){
+    //Make array of pokemons
     Pokemon** pokemons = new Pokemon*[n];
     for(int i = 0; i < n; i++){
         Pokemon* pokemon = new Pokemon;
@@ -55,6 +67,7 @@ int* releaseThemAll(HuntingList* list, int n){
         pokemons[i]=pokemon;
     }
     HuntingList* node=list;
+    //now insert predators to every pokemon
     while(node!=NULL){
         Pokemon* predator = pokemons[node->predator];
         Pokemon* prey = pokemons[node->prey];
@@ -66,12 +79,15 @@ int* releaseThemAll(HuntingList* list, int n){
     queue->arr=new int[n];
     queue->counter=0;
     for(int i = 0; i < n; i++){
+        //if pokemon is safe and isn't outside already, then unleash him
         if(pokemons[i]->predatorCounter==0 &&
                 !pokemons[i]->outside){
             unleashPokemon(pokemons[i],queue);
         }
 
     }
+    //if queue counter isn't n then don't return (not all pokemons are outside)
+    //queue counter is incremented in unleashPokemon function
     if(queue->counter==n)return queue->arr;
     return NULL;
 }
