@@ -123,8 +123,8 @@ int main() {
     cyclist[1].n_id=911;
     cyclist[2].id=911;
     cyclist[2].n_id=-1;
-    cyclist[3].id=2;
-    cyclist[3].n_id=-1;
+    //cyclist[3].id=2;
+    //cyclist[3].n_id=-1;
     int result = smallestGroup(cyclist,n);
     std::cout << "Smallest group: " << result << std::endl;
     return 0;
