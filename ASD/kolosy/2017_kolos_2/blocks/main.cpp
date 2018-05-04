@@ -63,6 +63,8 @@ void getIntervals(Node* root, int min, int max, Node** array, int &i, int&max_he
         max_height=root->heightWholeInterval;
 
     if(root->intervalMin==min && root->intervalMax==max){
+        if(root->maxHeightInside>max_height)
+            max_height=root->maxHeightInside;
         array[i++]=root;
         return;
     }
